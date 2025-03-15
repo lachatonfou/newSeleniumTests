@@ -303,6 +303,9 @@ public class seleniumDZ4 {
 
         String currentUrl = driver.getCurrentUrl();
         assertEquals(BASE_URL + multiLanguageUrl, currentUrl);
+
+        String title = driver.findElement(By.xpath("//h1[@class='display-6 lang']")).getText();
+        assertEquals("", title);
     }
 
     @Test
