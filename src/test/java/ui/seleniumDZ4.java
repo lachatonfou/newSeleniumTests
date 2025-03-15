@@ -205,6 +205,7 @@ public class seleniumDZ4 {
         assertEquals(BASE_URL + framesUrl, currentUrl);
 
         //String title = driver.findElement(By.xpath("//h1[@class='display-6']")).getText();
+        driver.switchTo().frame("frame-header");
         String title = driver.findElement(By.xpath("//h1[@class='display-6' and text()='Frames']")).getText();
         assertEquals("Frames", title);
     }
