@@ -299,7 +299,7 @@ public class seleniumDZ4 {
     void proverkaMultilanguage() {
 
         driver.findElement(By.xpath("//h5[text()='Chapter 5. Browser-Specific Manipulation']/../a[@href='multilanguage.html']")).click();
-        String multiLanguageUrl = "multilanguage.html";
+        String multiLanguageUrl  = "multilanguage.html";
 
         String currentUrl = driver.getCurrentUrl();
         assertEquals(BASE_URL + multiLanguageUrl, currentUrl);
