@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -155,5 +156,49 @@ public class seleniumDZ5 {
         String checkedCheckboxText = checkedCheckboxLabel.getText();
         assertEquals("Default radio", checkedCheckboxText);
         assertEquals(true, isSelected);
+    }
+
+    @Test
+    void proverkaColorPicker() throws InterruptedException {
+
+        WebElement colorPicker = driver.findElement(By.className("form-control-color"));
+        colorPicker.sendKeys("#ff0099");
+        Thread.sleep(1000);
+        String colorPickerValue = colorPicker.getAttribute("value");
+        WebElement colorPickerLabel = driver.findElement(By.xpath("//label[normalize-space(.)='Color picker']"));
+        String colorPickerText = colorPickerLabel.getText();
+        assertEquals("Color picker", colorPickerText);
+        assertEquals("#ff0099", colorPickerValue);
+    }
+
+    @Test
+    void proverkaDatePicker() throws InterruptedException {
+
+        WebElement datePicker = driver.findElement(By.xpath("//input[@class='form-control' and @name='my-date']"));
+        datePicker.sendKeys("13/04/2025");
+        Thread.sleep(1000);
+        String datePickerValue = datePicker.getAttribute("value");
+        WebElement datePickerLabel = driver.findElement(By.xpath("//label[normalize-space(.)='Date picker']"));
+        String datePickerText = datePickerLabel.getText();
+        assertEquals("Date picker", datePickerText);
+        assertEquals("13/04/2025", datePickerValue);
+    }
+
+    @Test
+    void proverkaExampleRange() throws InterruptedException {
+
+        WebElement exampleRange = driver.findElement(By.xpath("//input[@class='form-range' and @name='my-range']"));
+        Thread.sleep(1000);
+        Actions actions = new Actions(driver);
+        actions.clickAndHold(exampleRange)
+                .moveByOffset(60, 0)
+                .release()
+                .perform();
+        Thread.sleep(1000);
+        String exampleRangeValue = exampleRange.getAttribute("value");
+        WebElement exampleRangeLabel = driver.findElement(By.xpath("//label[normalize-space(.)='Example range']"));
+        String exampleRangeText = exampleRangeLabel.getText();
+        assertEquals("Example range", exampleRangeText);
+        assertEquals("7", exampleRangeValue);
     }
 }
