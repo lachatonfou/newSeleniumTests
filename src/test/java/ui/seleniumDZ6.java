@@ -132,13 +132,34 @@ public class seleniumDZ6 {
     void proverkaDropdownDatalist() throws InterruptedException {
 
         WebElement dropdownDatalist = driver.findElement(By.xpath("//input[@list='my-options']"));
-        dropdownDatalist.sendKeys("New York");
+        Thread.sleep(2000);
+        dropdownDatalist.click();
+
+        //driver.findElement(By.linkText("New York")).click();
+
+        //Select dropdown = new Select(dropdownDatalist);
+        //dropdown.selectByVisibleText("New York");
+        Thread.sleep(3000);
+        //WebElement selectedOption2 = dropdownDatalist.getFirstSelectedOption();
+        //String selectedValue2 = selectedOption2.getText();
+       // WebElement roditel = driver.findElement(By.id("my-options"));
+        //WebElement child = roditel.findElement(By.xpath("//option[@value='New York']"));
+        //WebElement child = roditel.findElement(By.linkText("New York"));
+       // child.click();
+        //String text = child.getText();
+        //System.out.println("nuzhniy tekst " + text);
+
+        //JavascriptExecutor js = (JavascriptExecutor)driver;
+        //js.executeScript("arguments[2].click();", child);
+
+        Thread.sleep(3000);
+        //child.click();
+        //dropdownDatalist.sendKeys("New York");
         Thread.sleep(3000);
         // проверка из серии - ввели текст и рады. нужна нормальная
     }
 
     @Test
-    @Tag("доделать")
     void proverkaFileInput() throws InterruptedException, IOException {
 
         String filePatch = "src/test/resources/test.txt";
